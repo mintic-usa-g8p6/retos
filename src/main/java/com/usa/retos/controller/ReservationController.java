@@ -17,34 +17,34 @@ import org.springframework.web.bind.annotation.*;
 public class ReservationController {
     
      @Autowired
-    private ReservationService service;
+    private ReservationService servicio;
     
     @PostMapping("/save")
     public ResponseEntity addReservacion(@RequestBody Reservation reservacion){
-        service.saveReservation(reservacion);
+        servicio.saveReservation(reservacion);
         return ResponseEntity.status(201).build();           
     }
     
     @GetMapping("/all")
     public List<Reservation> getAllResrvations(){
-        return service.getReservationAll();
+        return servicio.getReservationAll();
         
     }
     
     @PutMapping("/update")
    public ResponseEntity updateReservations(@RequestBody Reservation reservacion){
-      service.updateReservation(reservacion);
+      servicio.updateReservation(reservacion);
       return ResponseEntity.status(201).build();          
    }
     
     @GetMapping("{id}")
     public Reservation findReservations(@PathVariable int id){
-        return service.getReservationById(id);
+        return servicio.getReservationById(id);
     }
     
     @DeleteMapping("/{id}")
    public ResponseEntity deleteReservation(@PathVariable int id){
-       service.deleteReservation(id);
+       servicio.deleteReservation(id);
        return ResponseEntity.status(204).build();
    }
 }
